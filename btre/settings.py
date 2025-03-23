@@ -163,8 +163,7 @@ MESSAGE_TAGS = {
 }
 
 # At the bottom of settings.py, add:
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # email config
 # EMAIL_HOST = 'smtp.gmail.com'
