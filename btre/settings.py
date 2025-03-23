@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+import sys
+
+# At the top of your settings.py:
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,10 +87,10 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry'
-    )
+    'default': dj_database_url.parse(DATABASE_URL)
 }
+
+print(f"DATABASE CONFIG: {DATABASES['default']}", file=sys.stderr)
 
 ## DATABASES = {
     ## 'default': dj_database_url.config(default=os.environ.get('postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry'))
