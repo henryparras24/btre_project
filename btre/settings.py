@@ -92,9 +92,19 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 # }
 
 # print(f"DATABASE CONFIG: {DATABASES['default']}", file=sys.stderr)
-
-DATABASES = {
+# Check if running on Render (production)
+if 'RENDER' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry',
+            conn_max_age=600
+        )
+    }
+else:
+    DATABASES = {
     # 'default': dj_database_url.config(default=os.environ.get('postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry'))
+    
+    'default':
     {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'btredb',
