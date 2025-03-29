@@ -87,23 +87,23 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': dj_database_url.parse(DATABASE_URL)
+# }
+
+# print(f"DATABASE CONFIG: {DATABASES['default']}", file=sys.stderr)
+
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
+    # 'default': dj_database_url.config(default=os.environ.get('postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry'))
+    {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'btredb',
+       'USER': 'postgres',
+       'PASSWORD': 'Brianna0726',
+       'HOST': 'localhost',
+       'PORT': '5433'
+    }
 }
-
-print(f"DATABASE CONFIG: {DATABASES['default']}", file=sys.stderr)
-
-## DATABASES = {
-    ## 'default': dj_database_url.config(default=os.environ.get('postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry'))
-    ##{
-       ## 'ENGINE': 'django.db.backends.postgresql',
-       ## 'NAME': 'btredb',
-       ## 'USER': 'postgres',
-       ## 'PASSWORD': 'Brianna0726',
-       ## 'HOST': 'localhost',
-       ## 'PORT': '5433'
-    ##}
-##}
 
 
 # Password validation
