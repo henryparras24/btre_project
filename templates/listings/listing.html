@@ -2,6 +2,8 @@
 
 {% load humanize %}
 
+{% load static %}
+
 {% block title %} | {{ listing.title }} {% endblock %}
 
 {% block content %}
@@ -41,48 +43,48 @@
       <div class="row">
         <div class="col-md-9">
           <!-- Home Main Image -->
-          <img src="{{ listing.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
+          <img src="{% static listing.photo_main %}" alt="" class="img-main img-fluid mb-3">
           <!-- Thumbnails -->
           <div class="row mb-5 thumbs">
               {% if listing.photo_1 %}
             <div class="col-md-2">
-              <a href="{{ listing.photo_1.url }}" data-lightbox="home-images">
-                <img src="{{ listing.photo_1.url }}" alt="" class="img-fluid">
+              <a href="{% static listing.photo_1 %}" data-lightbox="home-images">
+                <img src="{% static listing.photo_1 %}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
             {% if listing.photo_2 %}
             <div class="col-md-2">
-              <a href="{{ listing.photo_2.url }}" data-lightbox="home-images">
-                <img src="{{ listing.photo_2.url }}" alt="" class="img-fluid">
+              <a href="{% static listing.photo_2 %}" data-lightbox="home-images">
+                <img src="{% static listing.photo_2 %}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
             {% if listing.photo_3 %}
             <div class="col-md-2">
-              <a href="{{ listing.photo_3.url }}" data-lightbox="home-images">
-                <img src="{{ listing.photo_3.url }}" alt="" class="img-fluid">
+              <a href="{% static listing.photo_3 %}" data-lightbox="home-images">
+                <img src="{% static listing.photo_3 %}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
             {% if listing.photo_4 %}
             <div class="col-md-2">
-              <a href="{{ listing.photo_4.url }}" data-lightbox="home-images">
-                <img src="{{ listing.photo_4.url }}" alt="" class="img-fluid">
+              <a href="{% static listing.photo_4 %}" data-lightbox="home-images">
+                <img src="{% static listing.photo_4 %}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
             {% if listing.photo_5 %}
             <div class="col-md-2">
-              <a href="{{ listing.photo_5.url }}" data-lightbox="home-images">
-                <img src="{{ listing.photo_5.url }}" alt="" class="img-fluid">
+              <a href="{% static listing.photo_5 %}" data-lightbox="home-images">
+                <img src="{% static listing.photo_5 %}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
             {% if listing.photo_6 %}
             <div class="col-md-2">
-              <a href="{{ listing.photo_6.url }}" data-lightbox="home-images">
-                <img src="{{ listing.photo_6.url }}" alt="" class="img-fluid">
+              <a href="{% static listing.photo_6 %}" data-lightbox="home-images">
+                <img src="{% static listing.photo_6 %}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
@@ -127,7 +129,7 @@
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-bed"></i> Realtor:
-                  <span class="float-right">{{ listing.realtor }}
+                  <span class="float-right">{{ listing.realtor.name }}
                   </span>
                 </li>
 
@@ -145,10 +147,10 @@
         </div>
         <div class="col-md-3">
           <div class="card mb-3">
-            <img class="card-img-top" src="{{ listing.realtor.photo.url }}" alt="">
+            <img class="card-img-top" src="{% static listing.realtor.photo %}" alt="">
             <div class="card-body">
               <h5 class="card-title">Property Realtor</h5>
-              <h6 class="text-secondary">{{ listing.realtor }}</h6>
+              <h6 class="text-secondary">{{ listing.realtor.name }}</h6>
             </div>
           </div>
           <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
@@ -204,5 +206,4 @@
       </div>
     </div>
   </div>
-
 {% endblock %}
