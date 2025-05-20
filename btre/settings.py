@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-$!*l3z=5_*7oz5odw9ddppz-p=57ds2ibb4hmkc&ph_i6&vh*p')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', '') != 'False'
+DEBUG = True
 
 ALLOWED_HOSTS = ['henrys-real-estate.onrender.com', 'henrys-real-estate-0z1h.onrender.com', '127.0.0.1', 'localhost']
 
@@ -92,16 +92,16 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 
 # print(f"DATABASE CONFIG: {DATABASES['default']}", file=sys.stderr)
 # Check if running on Render (production)
-if 'RENDER' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default='postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry',
-            conn_max_age=600
-        )
-    }
-else:
-    DATABASES = {
-    # 'default': dj_database_url.config(default=os.environ.get('postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry'))
+# if 'RENDER' in os.environ:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default='postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry',
+#             conn_max_age=600
+#         )
+#     }
+# else:
+
+DATABASES = {
     
     'default':
     {
