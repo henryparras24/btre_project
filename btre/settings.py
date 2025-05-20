@@ -83,35 +83,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'btre.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': dj_database_url.parse(DATABASE_URL)
-# }
-
-# print(f"DATABASE CONFIG: {DATABASES['default']}", file=sys.stderr)
 # Check if running on Render (production)
-# if 'RENDER' in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.config(
-#             default='postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry',
-#             conn_max_age=600
-#         )
-#     }
-# else:
-
-DATABASES = {
-    
-    'default':
-    {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'btredb',
-       'USER': 'postgres',
-       'PASSWORD': 'Brianna0726',
-       'HOST': 'localhost',
-       'PORT': '5433'
+if 'RENDER' in os.environ:
+    # Use production database
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgresql://sql_for_henry_user:yr5HoSEjAlTfYvYm3ctpV6df0TzehI3s@dpg-cvegpqrtq21c73edv5dg-a/sql_for_henry',
+            conn_max_age=600
+        )
     }
+else:
+
+    DATABASES = {
+            # Use local database
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'btredb',
+            'USER': 'postgres',
+            'PASSWORD': 'Brianna0726',
+            'HOST': 'localhost',
+            'PORT': '5433'
+        }
 }
 
 
